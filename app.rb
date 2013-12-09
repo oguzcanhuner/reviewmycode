@@ -19,13 +19,27 @@ class ReviewMyCode < Sinatra::Base
 
   register Sinatra::Auth::Github
 
-  get '/' do
-    if authenticated?
-      access_token = github_user["token"]
-      auth_result = RestClient.get("https://api.github.com/user", {:params => {:access_token => access_token, :accept => :json}, 
-                                                                   accept: :json})
-      auth_result = JSON.parse(auth_result)
+  def current_user
+    if authenticated? 
+      user = User.last(uuid: github_user.id)
+      if user.nil?
+        access_token = github_user["token"]
+        auth_result = RestClient.get("https://api.github.com/user", 
+                                     {:params => {access_token: access_token, accept: :json}, 
+                                                  accept: :json})
+        auth_result = JSON.parse(auth_result)
+        return User.create(uuid: auth_result['id'], gravatar_url: auth_result["avatar_url"])
+      else
+        return user
+      end
     end
+  end
+
+  before do
+    @current_user = current_user
+  end
+
+  get '/' do
     haml :index
   end
 

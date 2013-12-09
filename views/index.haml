@@ -1,5 +1,6 @@
-- if authenticated?
+- if @current_user
   %p Hey homes, you're in!
+  %img{src: @current_user.gravatar_url} 
 - else
   %p 
     Hey stranger
