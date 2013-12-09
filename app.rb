@@ -14,4 +14,20 @@ class ReviewMyCode < Sinatra::Base
     #gists_result = JSON.parse(gists_result)
     haml :index
   end
+
+  get '/submissions/new' do
+    haml :"gists/new"
+  end
+
+  post '/submissions' do
+    submission = Submission.new(params[:submission])
+    submission.save
+    redirect "submissions/#{submission.id}"
+  end
+
+  get '/submissions/:id' do |id|
+    submission = Submission.find(id)
+    "This is submission number #{submission.id}. \n\n
+     Code is: #{submission.code}"
+  end
 end

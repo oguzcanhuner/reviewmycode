@@ -37,7 +37,6 @@ module API
         authenticate!
         redirect "/"
       end
-
     end
   end
 end
