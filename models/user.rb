@@ -1,9 +1,8 @@
 class User
-  include DataMapper::Resource
+  include MongoMapper::Document
 
-  property :id, Serial 
-  property :uuid, Integer 
-  property :name, String 
-  property :username, String 
-  property :gravatar_url, String 
+  key :uuid, Integer 
+  key :name, String 
+  key :username, String 
+  key :gravatar_url, String 
 end

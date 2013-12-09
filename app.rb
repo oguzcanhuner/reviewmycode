@@ -21,7 +21,7 @@ class ReviewMyCode < Sinatra::Base
 
   def current_user
     if authenticated? 
-      user = User.last(uuid: github_user.id)
+      user = User.find_by_uuid(github_user.id)
       if user.nil?
         access_token = github_user["token"]
         auth_result = RestClient.get("https://api.github.com/user", 
