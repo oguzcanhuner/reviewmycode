@@ -1,2 +1,7 @@
-%a{href: "/login" }
-  Connect to github
+- if authenticated?
+  %p Hey homes, you're in!
+- else
+  %p 
+    Hey stranger
+    %a{href: "/login" }
+      Connect to github

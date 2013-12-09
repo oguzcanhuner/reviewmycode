@@ -2,6 +2,7 @@ ENV['RACK_ENV'] ||= 'development'
 require "rubygems"
 require "bundler/setup"
 
-require File.expand_path(File.join(File.dirname(__FILE__), 'review_my_code.rb'))
+root = File.dirname(__FILE__)
+require File.expand_path(File.join(root, 'app.rb'))
 
-run ReviewMyCode
+run ReviewMyCode.new
