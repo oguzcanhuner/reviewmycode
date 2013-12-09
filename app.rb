@@ -40,6 +40,10 @@ class ReviewMyCode < Sinatra::Base
   end
 
   get '/' do
+    if current_user
+      #gists_result = RestClient.get("https://api.github.com/gists", params: {user_id: 6975991}) 
+      #gists_result = JSON.parse(gists_result)
+    end
     haml :index
   end
 
