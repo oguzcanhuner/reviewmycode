@@ -12,8 +12,3 @@
     .fluid-container
       = yield
 
-    %script{src: "//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js", type: "text/javascript"}
-    :javascript
-      var editor = ace.edit("editor");
-      editor.setTheme("ace/theme/github");
-      editor.getSession().setMode("ace/mode/ruby");

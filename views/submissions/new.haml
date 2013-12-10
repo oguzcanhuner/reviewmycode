@@ -1,8 +1,14 @@
-%form{action: "/submissions", method: "POST"}
+%form.submission-form{action: "/submissions", method: "POST"}
   .form-group
     %textarea{name: "submission[description]", type: "text", class: "form-control", placeholder: "Enter a description"}
   .form-group
-    #editor{name:"submission[code]"} Enter some code..
-  //.form-group
-  //  %textarea{name: "submission[code]", type: "text", class: "form-control", placeholder: "Enter some code"}
+    #editor Enter some code..
+
+  %input{name: "submission[code]", class: "hidden-code-submission", type: "hidden"}
   %input{name: "submit", id: "code-submit", type: "submit", class: "btn btn-default"}
+
+%script{src: "//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js", type: "text/javascript"}
+:javascript
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/github");
+  editor.getSession().setMode("ace/mode/ruby");

@@ -1,2 +1,8 @@
-%h2= @submission.description
-%h2= @submission.code
+#editor= @submission.code
+
+%script{src: "//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js", type: "text/javascript"}
+:javascript
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/github");
+  editor.getSession().setMode("ace/mode/ruby");
+  editor.setReadOnly(true)

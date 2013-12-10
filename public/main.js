@@ -1,5 +1,7 @@
-$(document).ready(function() {
+$(function() {
   $("#code-submit").on("click", function(e) {
-    e.preventDefault(); 
+    e.stopPropagation(); 
+    $('.hidden-code-submission').val(editor.getValue());
+    $('.submission-form').submit();
   });
-};
+});
