@@ -18,12 +18,17 @@ class ReviewMyCode < Sinatra::Base
 
   register Sinatra::Auth::Github
 
+  def authorise_user!
+    redirect "/" if current_user.nil?
+  end
+
   require_relative "models/init"
   require_relative "services/init"
   require_relative "routes/init"
   require_relative "helpers/init"
 
   helpers Helpers::Auth
+
 
   get '/' do
     haml :index
