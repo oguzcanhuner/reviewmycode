@@ -1,7 +1,9 @@
 $(function() {
   $("#code-submit").on("click", function(e) {
-    e.stopPropagation(); 
-    $('.hidden-code-submission').val(editor.getValue());
-    $('.submission-form').submit();
+    if(editor.getValue() == ''){
+      e.preventDefault();
+    }else{
+      $('.hidden-code-submission').val(editor.getValue());
+    }
   });
 });
