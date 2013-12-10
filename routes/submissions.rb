@@ -4,14 +4,14 @@ ReviewMyCode.configure do |c|
   end
 
   c.post '/submissions' do
+    binding.pry
     submission = Submission.new(params[:submission])
     submission.save
     redirect "submissions/#{submission.id}"
   end
 
   c.get '/submissions/:id' do |id|
-    submission = Submission.find(id)
-    "This is submission number #{submission.id}. \n\n
-     Code is: #{submission.code}"
+    @submission = Submission.find(id)
+    haml :"submissions/show"
   end
 end

@@ -1,11 +1,22 @@
-- if current_user
-  %p Hey homes, you're in!
-  %img{src: current_user.gravatar_url} 
+.jumbotron
+  - if current_user
+    .user
+      %p Hey homes, you're in!
+      %img{src: current_user.gravatar_url} 
+    %a.btn.btn-default.btn-lg{href: "/submissions/new" } Add a submmission
 
-  %h2 Gists
-  %script{src: "https://gist.github.com/#{"oguzcanhuner"}/#{6975991}.js"}
-- else
-  %p 
-    Hey stranger
-    %a{href: "/login" }
-      Connect to github
+  - else
+    %p 
+      %h1 Code Reviews Like a Boss
+      %ol
+        %li Submit some code to be reviewed
+        %li Get paired with a reviewer
+        %li Work together to improve the quality of your code
+        %li ...
+        %li Profit
+
+      %p Sign up with Github to start
+      %a.btn.btn-default.btn-lg{href: "/login" } Connect to github
+
+// %h2 Gists
+// %script{src: "https://gist.github.com/#{"oguzcanhuner"}/#{6975991}.js"}
