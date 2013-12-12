@@ -4,7 +4,6 @@ class Github
     @user = params[:user]
   end
 
-  Gist = Struct.new(:content)
   def get_gist(gist_id)
     response = RestClient.get("https://api.github.com/gists/#{gist_id}")
     response = JSON.parse(response)
