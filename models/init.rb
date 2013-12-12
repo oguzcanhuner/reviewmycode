@@ -6,5 +6,5 @@ if ENV['RACK_ENV'] == "production"
   MongoMapper.setup({'production' => {'uri' => ENV['MONGOHQ_URL']}}, 'production')
 else
   MongoMapper.connection = Mongo::Connection.new('localhost', 27017)
+  MongoMapper.database = "reviewmycode"
 end
-MongoMapper.database = "reviewmycode"
