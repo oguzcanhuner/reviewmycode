@@ -14,7 +14,8 @@ ReviewMyCode.configure do |c|
 
   c.get '/submissions/:id' do |id|
     submission = Submission.find(id)
-    @gist = Github.new.get_gist(submission.gist_id)
+    response = Github.new.get_gist(submission.gist_id)
+    Gist.new(response)
     haml :"submissions/show"
   end
 end

@@ -7,7 +7,6 @@ class Github
   def get_gist(gist_id)
     response = RestClient.get("https://api.github.com/gists/#{gist_id}")
     response = JSON.parse(response)
-    Gist.new(response["files"]["reviewmycode"]["content"])
   end
 
   def create_gist(params)
