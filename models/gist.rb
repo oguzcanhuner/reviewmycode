@@ -1,5 +1,6 @@
 class Gist < Struct.new(:response)
   def content
-    response[:files][:reviewmycode][:content]
+    binding.pry
+    response.fetch('files').fetch('reviewmycode').fetch('content')
   end
 end
