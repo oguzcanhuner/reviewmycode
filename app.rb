@@ -29,7 +29,6 @@ class ReviewMyCode < Sinatra::Base
 
   helpers Helpers::Auth
 
-
   get '/' do
     haml :index
   end

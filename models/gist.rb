@@ -1,2 +1,5 @@
-class Gist < Struct.new(:content)
+class Gist < Struct.new(:response)
+  def content
+    response[:files][:reviewmycode][:content]
+  end
 end
